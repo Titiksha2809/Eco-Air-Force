@@ -6,7 +6,7 @@ import Chart from "./components/Chart";
 import Alerts from "./components/Alerts";
 import { buttonVariants } from "@/components/ui/button";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
-
+import { Analytics } from "@vercel/analytics/react";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -33,6 +33,7 @@ function App() {
           </a>
         </div>
       </main>
+      <Analytics />
     </ThemeProvider>
   );
 }
