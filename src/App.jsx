@@ -1,14 +1,25 @@
 import "./App.css";
-import { Button } from "@/components/ui/button";
-
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Navbar from "./components/Navbar";
+import DashboardCards from "./components/DashboardCards";
+import Chart from "./components/Chart";
+import Alerts from "./components/Alerts";
 function App() {
   return (
-    <>
-      <h1 className="bg-primary text-primary-foreground dark:bg-background dark:text-foreground inline m-2 p-5">
-        Hello world
-      </h1>
-      <Button>Click me</Button>
-    </>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <main className="bg-background">
+        <Navbar />
+        <DashboardCards />
+        <div className="mx-8 mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+          <div className="col-span-4">
+            <Chart />
+          </div>
+          <div className="col-span-3">
+            <Alerts />
+          </div>
+        </div>
+      </main>
+    </ThemeProvider>
   );
 }
 
