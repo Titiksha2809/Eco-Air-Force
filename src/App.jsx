@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import DashboardCards from "./components/DashboardCards";
 import Chart from "./components/Chart";
 import Alerts from "./components/Alerts";
+import { buttonVariants } from "@/components/ui/button";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -17,6 +20,17 @@ function App() {
           <div className="col-span-3">
             <Alerts />
           </div>
+        </div>
+        <div className="m-8">
+          <a
+            href="https://en.wikipedia.org/wiki/Air_quality_index#India"
+            className={buttonVariants({ variant: "destructive" })}
+            target="_blank"
+          >
+            <span className="flex gap-2 items-center">
+              Check Safe AQI Levels <ExternalLinkIcon />
+            </span>
+          </a>
         </div>
       </main>
     </ThemeProvider>
