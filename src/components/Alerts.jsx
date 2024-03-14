@@ -17,7 +17,7 @@ const Alerts = () => {
       <CardContent>
         <div className=" border-l-red-600 border-l-4 p-2 bg-secondary">
           <p>Today 9:30am</p>
-          <p className="font-medium">CO levels exceed the limit (500)</p>
+          <p className="font-medium">CO levels exceed the limit </p>
         </div>
       </CardContent>
       <CardContent>
