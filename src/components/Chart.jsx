@@ -1,4 +1,5 @@
 import { LineChart } from "@tremor/react";
+import React, { useState, useEffect } from "react";
 const data = [
   {
     name: "Page A",
@@ -45,19 +46,46 @@ const data = [
 ];
 
 export default function Chart() {
+  const [airData, setAirData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/latest-data/");
+      const data = await response.json();
+      setAirData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  console.log(airData[0]);
+  useEffect(() => {
+    // Fetch data initially
+    fetchData();
+
+    // Set up interval to fetch data every 5 seconds
+    const intervalId = setInterval(fetchData, 3000);
+    // console.log("fetching data");
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []); // empty dependency array means this effect runs once after the initial render
+
   return (
     <>
       <div></div>
+
       <LineChart
         className="border rounded-xl  p-4"
-        data={data}
-        index="date"
-        categories={["PM", "CO"]}
-        colors={["indigo", "rose"]}
+        data={airData}
+        index="data"
+        categories={["carbon_monoxide"]}
+        colors={["indigo"]}
         curveType="natural"
         showAnimation
         onValueChange={(v) => console.log(v)}
+        yAxisWidth={20}
+        minValue={800}
       />
+      <div></div>
     </>
   );
 }

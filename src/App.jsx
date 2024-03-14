@@ -7,6 +7,7 @@ import Alerts from "./components/Alerts";
 import { buttonVariants } from "@/components/ui/button";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import { Analytics } from "@vercel/analytics/react";
+import Chart2 from "./components/Chart2";
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -16,6 +17,7 @@ function App() {
         <div className="mx-8 mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-7">
           <div className="col-span-4">
             <Chart />
+            <Chart2 />
           </div>
           <div className="col-span-3">
             <Alerts />
